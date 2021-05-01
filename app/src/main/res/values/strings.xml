@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">countries</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="textview">TextView</string>
+    <string name="flag">flag</string>
+    <string name="continent_format">CONTINENT : %s</string>
+    <string name="population_format">POPULATION : %d</string>
+    <string name="country_format">COUNTRY : %s</string>
+    <string name="capital_format">CAPITAL : %s</string>
+</resources>

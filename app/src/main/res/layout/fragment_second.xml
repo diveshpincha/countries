@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.example.myapplication.database.CountriesData" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".specific.SecondFragment">
+
+        <TextView
+            android:id="@+id/CONTINENT"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{@string/continent_format(data.region)}"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/jhanda"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/jhanda"
+            app:layout_constraintTop_toBottomOf="@+id/population" />
+
+        <TextView
+            android:id="@+id/population"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@{@string/population_format(data.population)}"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/jhanda"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/jhanda"
+            app:layout_constraintTop_toBottomOf="@+id/CAPITAL" />
+
+        <ImageView
+            android:id="@+id/jhanda"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:contentDescription="@string/flag"
+            android:minHeight="50dp"
+            app:imageUrl="@{data.flag}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/country"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{@string/country_format(data.name)}"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/jhanda"
+            app:layout_constraintStart_toStartOf="@+id/jhanda"
+            app:layout_constraintTop_toBottomOf="@+id/jhanda"
+            />
+
+        <TextView
+            android:id="@+id/CAPITAL"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{@string/capital_format(data.capital)}"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/country"
+            app:layout_constraintStart_toStartOf="@+id/country"
+            app:layout_constraintTop_toBottomOf="@+id/country" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
