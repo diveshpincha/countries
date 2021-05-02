@@ -16,7 +16,6 @@ import com.example.myapplication.databinding.FragmentMainScreenBinding
 
 
 class MainScreenFragment : Fragment() {
-    private lateinit var mainViewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,8 +26,7 @@ class MainScreenFragment : Fragment() {
         val dataSource=CountriesDataBase.getInstance(app).countriesDao
 
         val mainViewModelFactory=MainViewModelFactory(dataSource)
-        val viewModel =
-            ViewModelProvider(this,mainViewModelFactory).get(MainViewModel::class.java)
+        val viewModel = ViewModelProvider(this,mainViewModelFactory).get(MainViewModel::class.java)
 
         // Inflate the layout for this fragment
         val binding = FragmentMainScreenBinding.inflate(inflater)

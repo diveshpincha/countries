@@ -51,7 +51,7 @@ class MainViewModel ( private val dataSource : CountriesDao): ViewModel() {
             _dbcountry.value=dataSource.display()
         }
 
-        if(_dbcountry.value?.size==0){
+        //if(_dbcountry.value?.size==0){
         viewModelScope.launch {
             val getDeferred = CountriesApi.retrofitGetter.getAllCountries()
 
@@ -63,7 +63,7 @@ class MainViewModel ( private val dataSource : CountriesDao): ViewModel() {
             insert()
         }
 
-    }}
+    }//}
 
     private val _selected=MutableLiveData<CountriesData>()
     val selected:LiveData<CountriesData>
