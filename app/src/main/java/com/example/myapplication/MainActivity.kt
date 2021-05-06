@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 
         //val fusedLocation : FusedLocationProviderClient=LocationS\
 
-        val apiKey:String = getString(R.string.api_key)
+/*        val apiKey:String = getString(R.string.api_key)
 
         if(!Places.isInitialized()){
             Places.initialize(applicationContext, apiKey)
@@ -94,6 +94,8 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, status.toString(), Toast.LENGTH_LONG).show()
             }
         })
+
+ */
 
         viewModel_main=ViewModelProvider(this).get(Main_ViewModel::class.java)
 

@@ -82,5 +82,8 @@ dependencies {
     implementation 'com.github.corouteam:GlideToVectorYou:v2.0.0'
 
     implementation 'com.google.android.libraries.places:places:2.4.0'
+
+    //implementation 'com.jakewharton:butterknife:8.8.1'
+    //kapt 'com.jakewharton:butterknife-compiler:8.8.1'
     
 }

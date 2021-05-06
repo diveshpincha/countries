@@ -7,10 +7,18 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.database.CountriesData
 import com.example.myapplication.databinding.CountryDataBinding
+import com.google.android.gms.common.data.DataHolder
 
-class CountriesListAdapter (val onClickListener:OnClickListener):
-    ListAdapter<CountriesData,CountriesListAdapter.CountriesViewHolder>(DiffCallBack) {
 
+
+
+class CountriesListAdapter(val onClickListener: OnClickListener):
+    ListAdapter<CountriesData, CountriesListAdapter.CountriesViewHolder>(DiffCallBack) {
+
+    fun updateList(list: List<CountriesData?>) {
+        submitList(list)
+        notifyDataSetChanged()
+    }
 
     class CountriesViewHolder(private var binding: CountryDataBinding) :
         RecyclerView.ViewHolder(binding.root) {
