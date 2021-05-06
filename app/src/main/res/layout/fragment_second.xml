@@ -7,7 +7,7 @@
     <data>
         <variable
             name="data"
-            type="com.example.myapplication.database.CountriesData" />
+            type="com.example.myapplication.specific.SecondViewModel" />
 
     </data>
 
@@ -15,6 +15,7 @@
         android:id="@+id/frameLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#85DF89"
         tools:context=".specific.SecondFragment">
 
         <TextView
@@ -22,8 +23,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{@string/continent_format(data.region)}"
-            android:textSize="24sp"
+            android:background="#00BCD4"
+            android:elegantTextHeight="true"
+            android:text="@{@string/continent_format(data.disData.region)}"
+            android:textColor="#BC2ED5"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/jhanda"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/jhanda"
@@ -33,9 +37,12 @@
             android:id="@+id/population"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@{@string/population_format(data.population)}"
-            android:textSize="24sp"
+            android:layout_marginTop="24dp"
+            android:background="#00BCD4"
+            android:elegantTextHeight="true"
+            android:text="@{@string/population_format(data.disData.population)}"
+            android:textColor="#BC2ED5"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/jhanda"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/jhanda"
@@ -44,13 +51,13 @@
         <ImageView
             android:id="@+id/jhanda"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="130dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
             android:contentDescription="@string/flag"
             android:minHeight="50dp"
-            app:imageUrl="@{data.flag}"
+            app:imageUrl="@{data.disData.flag}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -61,23 +68,95 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@{@string/country_format(data.name)}"
-            android:textSize="24sp"
+            android:background="#00BCD4"
+            android:elegantTextHeight="true"
+            android:text="@{@string/country_format(data.disData.name)}"
+            android:textColor="#BC2ED5"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/jhanda"
             app:layout_constraintStart_toStartOf="@+id/jhanda"
-            app:layout_constraintTop_toBottomOf="@+id/jhanda"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/jhanda" />
 
         <TextView
             android:id="@+id/CAPITAL"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@{@string/capital_format(data.capital)}"
-            android:textSize="24sp"
+            android:background="#00BCD4"
+            android:elegantTextHeight="true"
+            android:text="@{@string/capital_format(data.disData.capital)}"
+            android:textColor="#BC2ED5"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/country"
             app:layout_constraintStart_toStartOf="@+id/country"
             app:layout_constraintTop_toBottomOf="@+id/country" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar22"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="32dp"
+            android:background="@color/purple_500"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_constraintEnd_toEndOf="@+id/CONTINENT"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/CONTINENT"
+            app:layout_constraintTop_toBottomOf="@+id/CONTINENT"
+            app:popupTheme="@style/Theme.AppCompat.Light">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/toolbarimage"
+                    android:layout_width="80dp"
+                    android:layout_height="0dp"
+                    app:imageUrll="@{data.imgSrc}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/temperature"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@{data.temperature}"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toStartOf="@+id/toolbarimage"
+                    app:layout_constraintStart_toStartOf="@+id/description"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="temperature" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{data.description}"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/toolbarimage"
+                    tools:text="description" />
+
+                <TextView
+                    android:id="@+id/city"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@{data.city}"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/temperature"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="bbbbbbbbb" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -16,6 +16,7 @@
         android:background="@drawable/custom_item_layout"
         tools:context=".mainScreen.MainScreenFragment">
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/countries_list"
             android:layout_width="match_parent"

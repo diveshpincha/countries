@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/mainScreenFragment"
         android:name="com.example.myapplication.mainScreen.MainScreenFragment"
-        android:label="fragment_main_screen"
-        tools:layout="@layout/fragment_main_screen" >
+        android:label="ALL COUNTRIES"
+        tools:layout="@layout/fragment_main_screen">
         <action
             android:id="@+id/action_mainScreenFragment_to_secondFragment"
             app:destination="@id/secondFragment" />
@@ -17,14 +17,13 @@
     <fragment
         android:id="@+id/secondFragment"
         android:name="com.example.myapplication.specific.SecondFragment"
-        android:label="fragment_second"
-        tools:layout="@layout/fragment_second" >
+        tools:layout="@layout/fragment_second">
         <action
             android:id="@+id/action_secondFragment_to_mainScreenFragment"
             app:destination="@id/mainScreenFragment" />
         <argument
             android:name="key"
-            app:argType="long"
-            android:defaultValue="1L" />
+            android:defaultValue="1L"
+            app:argType="long" />
     </fragment>
 </navigation>

@@ -8,4 +8,5 @@
     <string name="population_format">POPULATION : %d</string>
     <string name="country_format">COUNTRY : %s</string>
     <string name="capital_format">CAPITAL : %s</string>
+    <string name="api_key">AIzaSyDL2i7qgfJ4Yk4nVO7dAFZVbgdNgrk4Y4o</string>
 </resources>

@@ -11,11 +11,12 @@ import com.example.myapplication.databinding.FragmentSecondBinding
 
 class SecondFragment : Fragment() {
 
+    private lateinit var binding:FragmentSecondBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentSecondBinding.inflate(inflater)
 
         val countryId =arguments?.let{ SecondFragmentArgs.fromBundle(it) }
 
@@ -32,12 +33,13 @@ class SecondFragment : Fragment() {
                 it
             ).get(SecondViewModel::class.java)
         }
-        binding.data= viewModel?.disData?.value
+
+        binding = FragmentSecondBinding.inflate(inflater)
+
         binding.lifecycleOwner=this
 
-        binding.executePendingBindings()
+        binding.data= viewModel
 
-        //binding.population.text=
 
         return binding.root
     }
