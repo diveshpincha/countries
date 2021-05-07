@@ -1,5 +1,6 @@
 package com.example.myapplication.mainScreen
 
+import android.text.Editable
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,33 +14,33 @@ import kotlinx.coroutines.*
 class MainViewModel ( private val dataSource : CountriesDao): ViewModel() {
 
     private var _properties = MutableLiveData<List<Countries>>()
-    val properties:LiveData<List<Countries>>
-    get() = _properties
+    val properties: LiveData<List<Countries>>
+        get() = _properties
 
     private var _dbcountry = MutableLiveData<List<CountriesData>>()
-    val dbcountry:LiveData<List<CountriesData>>
-    get() = _dbcountry
+    val dbcountry: LiveData<List<CountriesData>>
+        get() = _dbcountry
 
 
     val viewModelJob = Job()
     val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    init{
+    init {
         getCountries()
     }
 
-    fun insert(){
+    fun insert() {
         viewModelScope.launch {
-            withContext(Dispatchers.IO){
-                _properties.value?.forEach{
+            withContext(Dispatchers.IO) {
+                _properties.value?.forEach {
                     val idata = CountriesData()
-                    idata.capital=it.capital
-                    idata.population=it.population
-                    idata.name=it.name
-                    idata.region=it.region
-                    idata.flag=it.flag
+                    idata.capital = it.capital
+                    idata.population = it.population
+                    idata.name = it.name
+                    idata.region = it.region
+                    idata.flag = it.flag
                     dataSource.insert(idata)
-                    Log.i("db","insert")
+                    Log.i("db", "insert")
                 }
             }
         }
@@ -48,42 +49,55 @@ class MainViewModel ( private val dataSource : CountriesDao): ViewModel() {
     private fun getCountries() {
 
         viewModelScope.launch {
-            _dbcountry.value=dataSource.display()
+            _dbcountry.value = dataSource.display()
 
 
-        if( _dbcountry.value?.size==0 ){
-        viewModelScope.launch {
-            val getDeferred = CountriesApi.retrofitGetter.getAllCountries()
+            if (_dbcountry.value?.size == 0) {
+                viewModelScope.launch {
+                    val getDeferred = CountriesApi.retrofitGetter.getAllCountries()
 
-            try{
-                _properties.value=getDeferred.await()
-            }catch (error:Exception){
-                Log.i("error","erroe")
+                    try {
+                        _properties.value = getDeferred.await()
+                    } catch (error: Exception) {
+                        Log.i("error", "erroe")
+                    }
+                    insert()
+                }
+
             }
-            insert()
         }
+    }
 
-    }}}
-
-    private val _selected=MutableLiveData<CountriesData>()
-    val selected:LiveData<CountriesData>
-    get() = _selected
+    private val _selected = MutableLiveData<CountriesData>()
+    val selected: LiveData<CountriesData>
+        get() = _selected
 
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
     }
 
-    private var _navId=MutableLiveData<Long?>()
-    val navId:LiveData<Long?>
-    get() = _navId
+    private var _navId = MutableLiveData<Long?>()
+    val navId: LiveData<Long?>
+        get() = _navId
 
-    fun ForNav(idd:Long?){
-        _navId.value=idd
+    fun ForNav(idd: Long?) {
+        _navId.value = idd
     }
 
-    fun navDone(){
-        _navId.value=null
+    fun navDone() {
+        _navId.value = null
     }
 
+    fun filter(s: Editable): MutableList<CountriesData> {
+        val temp: MutableList<CountriesData> = ArrayList()
+        for (d in dbcountry.value!!) {
+            //or use .equal(text) with you want equal match
+            //use .toLowerCase() for better matches
+            if (d.name.contains(s, true)) {
+                temp.add(d)
+            }
+        }
+        return temp
+    }
 }

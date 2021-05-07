@@ -59,7 +59,7 @@ class SecondViewModel(private val dataSource:CountriesDao,val id : Long):ViewMod
             _DisData.value=dataSource.get(id)
             Log.i("chekc","$lat , $lon ")
 
-            val call = GetWeather.retroGetter.getWeatherByCity(_DisData.value!!.name, appId)
+            val call = GetWeather.retroGetter.getWeatherByCity(_DisData.value!!.capital, appId)
             try {
                 weatherApiData.value=call.await()
                 _temperature.value  = ((weatherApiData.value!!.main.temp - 273.15).toInt().toString()+"^C")

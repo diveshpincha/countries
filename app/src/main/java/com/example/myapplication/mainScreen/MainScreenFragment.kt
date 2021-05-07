@@ -55,15 +55,16 @@ class MainScreenFragment : Fragment() {
             override fun afterTextChanged(s: Editable) {
 
                 // filter your list from your input
-                val temp: MutableList<CountriesData> = ArrayList()
-                    for (d in viewModel.dbcountry.value!!) {
+               // val temp: MutableList<CountriesData> = ArrayList()
+                    /*for (d in viewModel.dbcountry.value!!) {
                         //or use .equal(text) with you want equal match
                         //use .toLowerCase() for better matches
                         if (d.name.contains(s,true)) {
                             temp.add(d)
                         }
-                        adapter.updateList(temp)
-                    }
+
+                    }*/
+                adapter.updateList(viewModel.filter(s))
 
 
                 //you can use runnable postDelayed like 500 ms to delay search text
