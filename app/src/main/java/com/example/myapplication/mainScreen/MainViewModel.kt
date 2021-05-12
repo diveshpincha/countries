@@ -93,7 +93,6 @@ class MainViewModel ( private val dataSource : CountriesDao): ViewModel() {
         val temp: MutableList<CountriesData> = ArrayList()
         for (d in dbcountry.value!!) {
             //or use .equal(text) with you want equal match
-            //use .toLowerCase() for better matches
             if (d.name.contains(s, true)) {
                 temp.add(d)
             }

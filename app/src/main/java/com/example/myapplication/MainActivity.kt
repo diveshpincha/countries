@@ -21,10 +21,13 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.myapplication.R.style.Theme_MyApplication
+import com.example.myapplication.database.CountriesData
 import com.example.myapplication.databinding.ActivityMainBinding
+import com.example.myapplication.mainScreen.MainScreenFragmentDirections
 import com.google.android.gms.common.api.Status
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -47,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         setTheme(Theme_MyApplication)
         val binding = ActivityMainBinding.inflate(layoutInflater)
 
-        val toolbar:Toolbar= binding.toolbar  //findViewById(R.id.toolbar)
+        val toolbar:Toolbar= binding.toolbar2  //findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         val navfrag=supportFragmentManager.findFragmentById(R.id.navHostFragmentFragment)  as NavHostFragment
         val navControl = navfrag.navController
@@ -103,6 +106,14 @@ class MainActivity : AppCompatActivity() {
 
         binding.weather=viewModel_main
 
+        binding.layoutChange.setOnClickListener{
+            layout_num.value = layout_num.value?.plus(1)
+        }
+
+        binding.imageButton.setOnClickListener{
+            binding.navHostFragmentFragment.findNavController().navigate(MainScreenFragmentDirections.actionMainScreenFragmentToSearch())
+        }
+
         /*try {
             if (ContextCompat.checkSelfPermission(
                     applicationContext,
@@ -156,7 +167,6 @@ class MainActivity : AppCompatActivity() {
         mainTextStringId: String, actionStringId: String, listener: View.OnClickListener) {
         //Toast.makeText(this@MainActivity, mainTextStringId, Toast.LENGTH_LONG).show()
         Snackbar.make(findViewById(R.id.main_layout),mainTextStringId,Snackbar.LENGTH_INDEFINITE).setAction(actionStringId,listener)
-
     }
 
     fun checkPermissions():Boolean{
@@ -220,6 +230,8 @@ class MainActivity : AppCompatActivity() {
         return navControl.navigateUp()
     }
     companion object{
+        val recent : MutableList<CountriesData> = ArrayList()
+        var layout_num = MutableLiveData<Int>(0)
         val REQUEST_PERMISSIONS_REQUEST_CODE=34
         var lastLocation : Location? = null
         var lat= MutableLiveData<String>()

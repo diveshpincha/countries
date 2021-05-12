@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.app.Activity
 import android.graphics.drawable.PictureDrawable
 import android.net.Uri
 import android.widget.ImageView
@@ -17,11 +18,11 @@ import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
-        //GlideToVectorYou.justLoadImage(imgView.context as Activity?, Uri.parse(imgUrl),imgView)
+        GlideToVectorYou.justLoadImage(imgView.context as Activity?, Uri.parse(imgUrl),imgView)
         //Log.i("image","set")
 
 
-        val requestBuilder:RequestBuilder<PictureDrawable> = GlideToVectorYou
+        /*val requestBuilder:RequestBuilder<PictureDrawable> = GlideToVectorYou
             .init()
             .with(imgView.context)
             .requestBuilder
@@ -30,6 +31,8 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
             .load(Uri.parse(imgUrl))
             .diskCacheStrategy(DiskCacheStrategy.NONE)
             .into(imgView)
+
+         */
     }
 }
 

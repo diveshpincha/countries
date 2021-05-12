@@ -13,7 +13,6 @@
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/custom_item_layout"
         tools:context=".mainScreen.MainScreenFragment">
 
 
@@ -21,17 +20,18 @@
             android:id="@+id/countries_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:clipToPadding="false"
-            android:padding="4dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchView"
+            app:layout_constraintTop_toTopOf="parent"
             app:listData="@{viewModel.dbcountry}"
             tools:itemCount="16"
             tools:listitem="@layout/country_data" />
 
-        <EditText
+       <!-- <EditText
             android:id="@+id/searchView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -42,6 +42,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+            -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

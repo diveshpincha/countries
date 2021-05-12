@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_mainScreenFragment_to_secondFragment"
             app:destination="@id/secondFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_search"
+            app:destination="@id/search" />
     </fragment>
     <fragment
         android:id="@+id/secondFragment"
@@ -25,5 +28,13 @@
             android:name="key"
             android:defaultValue="1L"
             app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/search"
+        android:name="com.example.myapplication.search.Search"
+        android:label="Search" >
+        <action
+            android:id="@+id/action_search_to_secondFragment"
+            app:destination="@id/secondFragment" />
     </fragment>
 </navigation>
